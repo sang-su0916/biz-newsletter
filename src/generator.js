@@ -154,7 +154,20 @@ export async function generateEbook({ folderName, topic, author }) {
   try {
     // 1단계: 지식 베이스 구축
     console.log('📚 1단계: Obsidian 볼트에서 지식 베이스 구축 중...');
-    const obsidianPath = `/Users/isangsu/TMP_MY/knowledge.biz/${folderName}`;
+
+    // 배포 환경 체크 - 로컬 경로가 없으면 샘플 데이터 사용
+    const isProduction = process.env.NODE_ENV === 'production' || process.env.VERCEL;
+    let obsidianPath;
+
+    if (isProduction) {
+      // 배포 환경: 프로젝트 내 샘플 데이터 사용
+      obsidianPath = path.join(process.cwd(), 'sample-data', folderName);
+      console.log('   ⚠️  배포 환경: 샘플 데이터 사용');
+    } else {
+      // 로컬 환경: 실제 Obsidian 볼트 사용
+      obsidianPath = `/Users/isangsu/TMP_MY/knowledge.biz/${folderName}`;
+    }
+
     const knowledgeBase = await mockMCP.readObsidianFolder(obsidianPath);
     console.log('   ✓ 지식 베이스 구축 완료\n');
 

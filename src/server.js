@@ -2,10 +2,7 @@
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { exec } from 'child_process';
-import { promisify } from 'util';
-
-const execAsync = promisify(exec);
+import { generateEbook } from './generator.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -17,21 +14,18 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
-// 생성된 파일 제공 (Python 출력 경로)
-app.use('/downloads', express.static(path.join(process.cwd(), 'output/generated_ebooks')));
-
-// Markdown 파일 제공 (Obsidian 경로)
-app.use('/downloads-md', express.static(path.join('/Users/isangsu/Documents/Obsidian/Obsi/Vault.01/Auto News letter/News Completion')));
+// 생성된 파일 제공 (JavaScript 출력 경로)
+app.use('/downloads', express.static(path.join(process.cwd(), 'Auto News letter', 'News Completion')));
 
 // 헬스체크
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: '비즈니스 전자책 생성기가 정상 작동 중입니다' });
 });
 
-// 전자책 생성 API (Python 스크립트 호출)
+// 전자책 생성 API (JavaScript 버전)
 app.post('/api/generate', async (req, res) => {
   try {
-    const { folderName, topic, theme, model } = req.body;
+    const { folderName, topic } = req.body;
 
     // 입력값 검증
     if (!folderName || !topic) {
@@ -41,45 +35,19 @@ app.post('/api/generate', async (req, res) => {
       });
     }
 
-    const selectedTheme = theme || 'dark'; // 기본값: dark
-    const selectedModel = model || 'claude'; // 기본값: claude
-
     console.log(`\n📚 전자책 생성 요청:`);
     console.log(`   폴더: ${folderName}`);
-    console.log(`   주제: ${topic}`);
-    console.log(`   테마: ${selectedTheme}`);
-    console.log(`   모델: ${selectedModel}\n`);
+    console.log(`   주제: ${topic}\n`);
 
-    // Python 스크립트 경로
-    const pythonScript = path.join(process.cwd(), 'ebook_generator_wrapper.py');
-
-    // Python 스크립트 실행 (venv 환경 사용)
-    console.log('🐍 Python 스크립트 실행 중...');
-    const pythonBin = path.join(process.cwd(), 'venv/bin/python3');
-    const { stdout, stderr } = await execAsync(
-      `"${pythonBin}" "${pythonScript}" "${folderName}" "${topic}" "${selectedTheme}" "${selectedModel}"`,
-      {
-        timeout: 300000, // 5분 타임아웃
-        maxBuffer: 10 * 1024 * 1024, // 10MB 버퍼
-        cwd: process.cwd()
-      }
-    );
-
-    if (stderr && !stderr.includes('Warning')) {
-      console.error('Python stderr:', stderr);
-    }
-
-    // Python 출력 파싱
-    const result = JSON.parse(stdout.trim());
-
-    if (!result.success) {
-      throw new Error(result.error || 'Python 스크립트 실행 실패');
-    }
-
-    console.log('✅ Python 스크립트 실행 완료');
+    // JavaScript 전자책 생성 함수 호출
+    const result = await generateEbook({
+      folderName,
+      topic,
+      author: 'J-Business'
+    });
 
     // 파일명 추출
-    const filename = result.filename;
+    const filename = path.basename(result.htmlPath);
 
     res.json({
       success: true,
@@ -89,6 +57,10 @@ app.post('/api/generate', async (req, res) => {
       paths: {
         html: result.htmlPath,
         md: result.mdPath
+      },
+      stats: {
+        wordCount: result.wordCount,
+        sections: result.sections
       }
     });
 
