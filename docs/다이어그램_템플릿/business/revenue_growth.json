@@ -1,0 +1,70 @@
+{
+  "id": "revenue_growth",
+  "title": "매출 증대 전략 흐름",
+  "category": "business",
+  "keywords": ["매출", "수익", "성장", "전략", "비즈니스", "수입", "판매"],
+  "description": "매출을 지속적으로 증대시키기 위한 전략적 프로세스 흐름도",
+  "color_palette": {
+    "primary": "#2ED573",
+    "secondary": "#FF4757",
+    "accent": "#FFA502",
+    "background": "#0A0A0A"
+  },
+  "svg_template": `
+    <div class="diagram-container">
+      <div class="diagram-title">{title} 핵심 프로세스</div>
+      <svg width="100%" height="350" viewBox="0 0 800 350">
+        <!-- 중앙 목표 -->
+        <circle cx="400" cy="175" r="50" fill="#2ED573" stroke="#FFF" stroke-width="3"/>
+        <text x="400" y="170" text-anchor="middle" fill="white" font-size="13" font-weight="bold">매출</text>
+        <text x="400" y="185" text-anchor="middle" fill="white" font-size="13" font-weight="bold">증대</text>
+
+        <!-- 좌측 전략들 -->
+        <rect x="80" y="60" width="120" height="50" rx="8" fill="#FF4757"/>
+        <text x="140" y="80" text-anchor="middle" fill="white" font-size="11" font-weight="bold">신규 고객</text>
+        <text x="140" y="95" text-anchor="middle" fill="white" font-size="11" font-weight="bold">획득</text>
+
+        <rect x="80" y="140" width="120" height="50" rx="8" fill="#FFA502"/>
+        <text x="140" y="160" text-anchor="middle" fill="white" font-size="11" font-weight="bold">기존 고객</text>
+        <text x="140" y="175" text-anchor="middle" fill="white" font-size="11" font-weight="bold">유지</text>
+
+        <rect x="80" y="220" width="120" height="50" rx="8" fill="#5F27CD"/>
+        <text x="140" y="240" text-anchor="middle" fill="white" font-size="11" font-weight="bold">상품 단가</text>
+        <text x="140" y="255" text-anchor="middle" fill="white" font-size="11" font-weight="bold">상승</text>
+
+        <!-- 우측 실행 방법들 -->
+        <rect x="600" y="60" width="120" height="50" rx="8" fill="#FF6B6B"/>
+        <text x="660" y="80" text-anchor="middle" fill="white" font-size="11" font-weight="bold">마케팅</text>
+        <text x="660" y="95" text-anchor="middle" fill="white" font-size="11" font-weight="bold">최적화</text>
+
+        <rect x="600" y="140" width="120" height="50" rx="8" fill="#3C40C6"/>
+        <text x="660" y="160" text-anchor="middle" fill="white" font-size="11" font-weight="bold">고객 서비스</text>
+        <text x="660" y="175" text-anchor="middle" fill="white" font-size="11" font-weight="bold">향상</text>
+
+        <rect x="600" y="220" width="120" height="50" rx="8" fill="#00D2D3"/>
+        <text x="660" y="240" text-anchor="middle" fill="white" font-size="11" font-weight="bold">제품 가치</text>
+        <text x="660" y="255" text-anchor="middle" fill="white" font-size="11" font-weight="bold">증진</text>
+
+        <!-- 하단 성과 측정 -->
+        <rect x="300" y="280" width="200" height="40" rx="8" fill="#2ED573"/>
+        <text x="400" y="305" text-anchor="middle" fill="white" font-size="12" font-weight="bold">지속적 성과 모니터링</text>
+
+        <!-- 연결선들 -->
+        <path d="M200 85 L350 140" stroke="#FF4757" stroke-width="3" marker-end="url(#arrow2)"/>
+        <path d="M200 165 L350 165" stroke="#FFA502" stroke-width="3" marker-end="url(#arrow2)"/>
+        <path d="M200 245 L350 210" stroke="#5F27CD" stroke-width="3" marker-end="url(#arrow2)"/>
+
+        <path d="M450 140 L600 85" stroke="#2ED573" stroke-width="3" marker-end="url(#arrow2)"/>
+        <path d="M450 165 L600 165" stroke="#2ED573" stroke-width="3" marker-end="url(#arrow2)"/>
+        <path d="M450 210 L600 245" stroke="#2ED573" stroke-width="3" marker-end="url(#arrow2)"/>
+
+        <path d="M400 225 L400 280" stroke="#2ED573" stroke-width="3" marker-end="url(#arrow2)"/>
+
+        <defs>
+          <marker id="arrow2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#2ED573"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>`
+}

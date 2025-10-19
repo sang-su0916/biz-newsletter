@@ -1,0 +1,37 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Output files
+Auto News letter/News Completion/*.html
+Auto News letter/News Completion/*.md
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.mcp.json
+
+# Generated files
+newsletter_*.html
+output/
+*.pdf
+
+# Logs
+logs/
+*.log
+
+# Claude
+.claude/
+__pycache__/
+venv/

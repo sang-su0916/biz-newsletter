@@ -1,0 +1,78 @@
+{
+  "id": "digital_marketing_funnel",
+  "title": "디지털 마케팅 퍼널",
+  "category": "marketing",
+  "keywords": ["마케팅", "퍼널", "디지털", "전환", "광고", "캠페인", "고객"],
+  "description": "디지털 마케팅에서 고객 전환을 위한 단계별 퍼널 프로세스 흐름도",
+  "color_palette": {
+    "primary": "#FF6B6B",
+    "secondary": "#4ECDC4",
+    "accent": "#45B7D1",
+    "background": "#0A0A0A"
+  },
+  "svg_template": `
+    <div class="diagram-container">
+      <div class="diagram-title">{title} 핵심 프로세스</div>
+      <svg width="100%" height="400" viewBox="0 0 800 400">
+        <!-- 퍼널 모양 구조 -->
+        <!-- 상단: 인지도 -->
+        <polygon points="100,80 700,80 650,130 150,130" fill="#FF6B6B" stroke="#FFF" stroke-width="2"/>
+        <text x="400" y="110" text-anchor="middle" fill="white" font-size="14" font-weight="bold">인지도 (Awareness) - 광범위한 노출</text>
+
+        <!-- 관심 -->
+        <polygon points="150,130 650,130 600,180 200,180" fill="#FFA502" stroke="#FFF" stroke-width="2"/>
+        <text x="400" y="160" text-anchor="middle" fill="white" font-size="13" font-weight="bold">관심 (Interest) - 타겟팅 광고</text>
+
+        <!-- 고려 -->
+        <polygon points="200,180 600,180 550,230 250,230" fill="#4ECDC4" stroke="#FFF" stroke-width="2"/>
+        <text x="400" y="210" text-anchor="middle" fill="white" font-size="12" font-weight="bold">고려 (Consideration) - 콘텐츠 제공</text>
+
+        <!-- 의도 -->
+        <polygon points="250,230 550,230 500,280 300,280" fill="#45B7D1" stroke="#FFF" stroke-width="2"/>
+        <text x="400" y="260" text-anchor="middle" fill="white" font-size="11" font-weight="bold">의도 (Intent) - 개인화 제안</text>
+
+        <!-- 구매 -->
+        <polygon points="300,280 500,280 450,330 350,330" fill="#2ED573" stroke="#FFF" stroke-width="2"/>
+        <text x="400" y="310" text-anchor="middle" fill="white" font-size="10" font-weight="bold">구매 (Purchase) - 전환 최적화</text>
+
+        <!-- 우측 마케팅 채널 -->
+        <rect x="50" y="50" width="40" height="25" rx="4" fill="#E74C3C"/>
+        <text x="70" y="67" text-anchor="middle" fill="white" font-size="8">SEO</text>
+
+        <rect x="50" y="80" width="40" height="25" rx="4" fill="#9B59B6"/>
+        <text x="70" y="97" text-anchor="middle" fill="white" font-size="8">SNS</text>
+
+        <rect x="50" y="110" width="40" height="25" rx="4" fill="#3498DB"/>
+        <text x="70" y="127" text-anchor="middle" fill="white" font-size="8">PPC</text>
+
+        <rect x="50" y="140" width="40" height="25" rx="4" fill="#F39C12"/>
+        <text x="70" y="157" text-anchor="middle" fill="white" font-size="8">이메일</text>
+
+        <!-- 좌측 전환율 -->
+        <circle cx="750" cy="105" r="15" fill="#FF6B6B"/>
+        <text x="750" y="110" text-anchor="middle" fill="white" font-size="9">100%</text>
+
+        <circle cx="750" cy="155" r="15" fill="#FFA502"/>
+        <text x="750" y="160" text-anchor="middle" fill="white" font-size="9">25%</text>
+
+        <circle cx="750" cy="205" r="15" fill="#4ECDC4"/>
+        <text x="750" y="210" text-anchor="middle" fill="white" font-size="9">10%</text>
+
+        <circle cx="750" cy="255" r="15" fill="#45B7D1"/>
+        <text x="750" y="260" text-anchor="middle" fill="white" font-size="9">5%</text>
+
+        <circle cx="750" cy="305" r="15" fill="#2ED573"/>
+        <text x="750" y="310" text-anchor="middle" fill="white" font-size="9">2%</text>
+
+        <!-- 연결선 -->
+        <path d="M90 105 L100 105" stroke="#E74C3C" stroke-width="2"/>
+        <path d="M90 155 L150 155" stroke="#FFA502" stroke-width="2"/>
+        <path d="M90 205 L200 205" stroke="#4ECDC4" stroke-width="2"/>
+        <path d="M90 255 L250 255" stroke="#45B7D1" stroke-width="2"/>
+
+        <!-- 최적화 포인트 -->
+        <rect x="320" y="350" width="160" height="30" rx="6" fill="#2ED573"/>
+        <text x="400" y="370" text-anchor="middle" fill="white" font-size="11" font-weight="bold">최적화 포인트: 각 단계별 전환율 개선</text>
+      </svg>
+    </div>`
+}

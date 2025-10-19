@@ -1,0 +1,40 @@
+{
+  "id": "software_architecture",
+  "title": "소프트웨어 아키텍처 설계",
+  "category": "technology",
+  "keywords": ["소프트웨어", "아키텍처", "설계", "시스템", "구조", "개발", "기술"],
+  "description": "확장 가능한 소프트웨어 아키텍처 설계를 위한 레이어 구조 다이어그램",
+  "color_palette": {
+    "primary": "#00D2D3",
+    "secondary": "#FF9F43",
+    "accent": "#5F27CD",
+    "background": "#0A0A0A"
+  },
+  "svg_template": `
+    <div class="diagram-container">
+      <div class="diagram-title">{title} 핵심 프로세스</div>
+      <svg width="100%" height="350" viewBox="0 0 800 350">
+        <rect x="100" y="50" width="600" height="50" rx="8" fill="#00D2D3"/>
+        <text x="400" y="80" text-anchor="middle" fill="white" font-size="13" font-weight="bold">프레젠테이션 레이어 (UI/UX)</text>
+
+        <rect x="100" y="120" width="600" height="50" rx="8" fill="#FF9F43"/>
+        <text x="400" y="150" text-anchor="middle" fill="white" font-size="13" font-weight="bold">비즈니스 로직 레이어</text>
+
+        <rect x="100" y="190" width="600" height="50" rx="8" fill="#5F27CD"/>
+        <text x="400" y="220" text-anchor="middle" fill="white" font-size="13" font-weight="bold">데이터 액세스 레이어</text>
+
+        <rect x="100" y="260" width="600" height="50" rx="8" fill="#2ED573"/>
+        <text x="400" y="290" text-anchor="middle" fill="white" font-size="13" font-weight="bold">데이터베이스 레이어</text>
+
+        <path d="M400 100 L400 120" stroke="#FF4757" stroke-width="3" marker-end="url(#arrow6)"/>
+        <path d="M400 170 L400 190" stroke="#FF4757" stroke-width="3" marker-end="url(#arrow6)"/>
+        <path d="M400 240 L400 260" stroke="#FF4757" stroke-width="3" marker-end="url(#arrow6)"/>
+
+        <defs>
+          <marker id="arrow6" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#FF4757"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>`
+}

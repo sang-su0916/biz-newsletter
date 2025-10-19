@@ -1,0 +1,15 @@
+{
+  "name": "business-ebook-generator",
+  "version": "1.0.0",
+  "description": "Obsidian 볼트 기반 비즈니스 전자책 자동 생성 앱",
+  "type": "module",
+  "scripts": {
+    "start": "node src/app.js",
+    "web": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "inquirer": "^9.2.12"
+  }
+}

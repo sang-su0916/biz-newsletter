@@ -1,0 +1,76 @@
+{
+  "version": "1.0",
+  "total_diagrams": 7,
+  "categories": {
+    "business": 4,
+    "technology": 2,
+    "marketing": 2
+  },
+  "diagrams": [
+    {
+      "id": "startup_launch",
+      "file": "business/startup_launch.json",
+      "title": "스타트업 런칭 프로세스",
+      "category": "business",
+      "keywords": ["스타트업", "창업", "런칭", "비즈니스", "시작", "론칭", "출시"],
+      "priority": 1
+    },
+    {
+      "id": "revenue_growth",
+      "file": "business/revenue_growth.json",
+      "title": "매출 증대 전략 흐름",
+      "category": "business",
+      "keywords": ["매출", "수익", "성장", "전략", "비즈니스", "수입", "판매"],
+      "priority": 1
+    },
+    {
+      "id": "customer_journey",
+      "file": "business/customer_journey.json",
+      "title": "고객 획득 여정",
+      "category": "business",
+      "keywords": ["고객", "여정", "획득", "마케팅", "판매", "구매", "전환"],
+      "priority": 1
+    },
+    {
+      "id": "business_model",
+      "file": "business/business_model.json",
+      "title": "비즈니스 모델 설계",
+      "category": "business",
+      "keywords": ["비즈니스모델", "모델", "설계", "전략", "수익", "가치", "제안"],
+      "priority": 1
+    },
+    {
+      "id": "ai_ml_pipeline",
+      "file": "technology/ai_ml_pipeline.json",
+      "title": "AI/ML 개발 파이프라인",
+      "category": "technology",
+      "keywords": ["AI", "ML", "머신러닝", "인공지능", "데이터", "모델", "딥러닝"],
+      "priority": 1
+    },
+    {
+      "id": "software_architecture",
+      "file": "technology/software_architecture.json",
+      "title": "소프트웨어 아키텍처 설계",
+      "category": "technology",
+      "keywords": ["소프트웨어", "아키텍처", "설계", "시스템", "구조", "개발", "기술"],
+      "priority": 1
+    },
+    {
+      "id": "digital_marketing_funnel",
+      "file": "marketing/digital_marketing_funnel.json",
+      "title": "디지털 마케팅 퍼널",
+      "category": "marketing",
+      "keywords": ["마케팅", "퍼널", "디지털", "전환", "광고", "캠페인", "고객"],
+      "priority": 1
+    },
+    {
+      "id": "content_marketing",
+      "file": "marketing/content_marketing.json",
+      "title": "콘텐츠 마케팅 전략",
+      "category": "marketing",
+      "keywords": ["콘텐츠", "마케팅", "블로그", "SEO", "소셜미디어", "브랜딩"],
+      "priority": 1
+    }
+  ],
+  "default_fallback": "business_model"
+}

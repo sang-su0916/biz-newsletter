@@ -1,0 +1,66 @@
+{
+  "id": "startup_launch",
+  "title": "스타트업 런칭 프로세스",
+  "category": "business",
+  "keywords": ["스타트업", "창업", "런칭", "비즈니스", "시작", "론칭", "출시"],
+  "description": "스타트업을 성공적으로 런칭하기 위한 단계별 프로세스 흐름도",
+  "color_palette": {
+    "primary": "#FF4757",
+    "secondary": "#2ED573",
+    "accent": "#FFA502",
+    "background": "#0A0A0A"
+  },
+  "svg_template": `
+    <div class="diagram-container">
+      <div class="diagram-title">{title} 핵심 프로세스</div>
+      <svg width="100%" height="350" viewBox="0 0 800 350">
+        <!-- 1단계: 아이디어 검증 -->
+        <rect x="50" y="50" width="120" height="60" rx="8" fill="#FF4757" stroke="#FFF" stroke-width="2"/>
+        <text x="110" y="75" text-anchor="middle" fill="white" font-size="12" font-weight="bold">1. 아이디어</text>
+        <text x="110" y="90" text-anchor="middle" fill="white" font-size="12" font-weight="bold">검증</text>
+
+        <!-- 2단계: MVP 개발 -->
+        <rect x="220" y="50" width="120" height="60" rx="8" fill="#2ED573" stroke="#FFF" stroke-width="2"/>
+        <text x="280" y="75" text-anchor="middle" fill="white" font-size="12" font-weight="bold">2. MVP</text>
+        <text x="280" y="90" text-anchor="middle" fill="white" font-size="12" font-weight="bold">개발</text>
+
+        <!-- 3단계: 시장 테스트 -->
+        <rect x="390" y="50" width="120" height="60" rx="8" fill="#FFA502" stroke="#FFF" stroke-width="2"/>
+        <text x="450" y="75" text-anchor="middle" fill="white" font-size="12" font-weight="bold">3. 시장</text>
+        <text x="450" y="90" text-anchor="middle" fill="white" font-size="12" font-weight="bold">테스트</text>
+
+        <!-- 4단계: 피드백 수집 -->
+        <rect x="560" y="50" width="120" height="60" rx="8" fill="#5F27CD" stroke="#FFF" stroke-width="2"/>
+        <text x="620" y="75" text-anchor="middle" fill="white" font-size="12" font-weight="bold">4. 피드백</text>
+        <text x="620" y="90" text-anchor="middle" fill="white" font-size="12" font-weight="bold">수집</text>
+
+        <!-- 5단계: 제품 개선 -->
+        <rect x="220" y="170" width="120" height="60" rx="8" fill="#FF6B6B" stroke="#FFF" stroke-width="2"/>
+        <text x="280" y="195" text-anchor="middle" fill="white" font-size="12" font-weight="bold">5. 제품</text>
+        <text x="280" y="210" text-anchor="middle" fill="white" font-size="12" font-weight="bold">개선</text>
+
+        <!-- 6단계: 스케일링 -->
+        <rect x="390" y="170" width="120" height="60" rx="8" fill="#3C40C6" stroke="#FFF" stroke-width="2"/>
+        <text x="450" y="195" text-anchor="middle" fill="white" font-size="12" font-weight="bold">6. 스케일링</text>
+        <text x="450" y="210" text-anchor="middle" fill="white" font-size="12" font-weight="bold">준비</text>
+
+        <!-- 연결 화살표 -->
+        <path d="M170 80 L220 80" stroke="#FF4757" stroke-width="3" marker-end="url(#arrowhead1)"/>
+        <path d="M340 80 L390 80" stroke="#FF4757" stroke-width="3" marker-end="url(#arrowhead1)"/>
+        <path d="M510 80 L560 80" stroke="#FF4757" stroke-width="3" marker-end="url(#arrowhead1)"/>
+        <path d="M620 110 L620 130 L280 130 L280 170" stroke="#FF4757" stroke-width="3" marker-end="url(#arrowhead1)"/>
+        <path d="M340 200 L390 200" stroke="#FF4757" stroke-width="3" marker-end="url(#arrowhead1)"/>
+
+        <!-- 성공 지표 -->
+        <ellipse cx="600" cy="280" rx="80" ry="30" fill="#2ED573" stroke="#FFF" stroke-width="2"/>
+        <text x="600" y="280" text-anchor="middle" fill="white" font-size="11" font-weight="bold">성공적 런칭</text>
+        <path d="M450 230 L520 260" stroke="#FF4757" stroke-width="3" marker-end="url(#arrowhead1)"/>
+
+        <defs>
+          <marker id="arrowhead1" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#FF4757"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>`
+}

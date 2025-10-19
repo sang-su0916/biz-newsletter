@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비즈니스 전자책 생성기</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0A0A0A 0%, #1A2A4A 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(26, 26, 26, 0.95);
+            border-radius: 24px;
+            border: 2px solid #1E40AF;
+            padding: 48px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .logo h1 {
+            font-size: 2rem;
+            color: #3B82F6;
+            margin-bottom: 8px;
+        }
+
+        .logo p {
+            color: #B8BCC8;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            color: #FFFFFF;
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 14px 16px;
+            background: #0A0A0A;
+            border: 2px solid #2F2F2F;
+            border-radius: 12px;
+            color: #FFFFFF;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #3B82F6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .hint {
+            color: #6C7293;
+            font-size: 0.85rem;
+            margin-top: 6px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 32px;
+        }
+
+        .btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn:disabled {
+            background: #2F2F2F;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            color: #3B82F6;
+            margin-top: 24px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 3px solid rgba(59, 130, 246, 0.2);
+            border-top: 3px solid #3B82F6;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 16px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .result {
+            display: none;
+            background: rgba(46, 213, 115, 0.1);
+            border: 2px solid #2ED573;
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 24px;
+            text-align: center;
+        }
+
+        .result.active {
+            display: block;
+        }
+
+        .result h3 {
+            color: #2ED573;
+            margin-bottom: 16px;
+        }
+
+        .result a {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #2ED573;
+            color: #0A0A0A;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .result a:hover {
+            background: #26de81;
+            transform: translateY(-2px);
+        }
+
+        .error {
+            display: none;
+            background: rgba(255, 59, 48, 0.1);
+            border: 2px solid #FF3B30;
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 24px;
+            color: #FF3B30;
+        }
+
+        .error.active {
+            display: block;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 32px;
+            color: #6C7293;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 32px 24px;
+            }
+
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>📚 비즈니스 전자책 생성기</h1>
+            <p>세무·노무·회계 전문 콘텐츠 자동 생성</p>
+        </div>
+
+        <form id="ebookForm">
+            <div class="form-group">
+                <label for="folderName">옵시디언 폴더명</label>
+                <input type="text" id="folderName" name="folderName" value="10. Biz" required>
+                <p class="hint">지식 베이스가 저장된 폴더명을 입력하세요</p>
+            </div>
+
+            <div class="form-group">
+                <label for="topic">전자책 주제</label>
+                <input type="text" id="topic" name="topic" placeholder="예: 중소기업 절세 전략 가이드" required>
+                <p class="hint">생성할 전자책의 주제를 입력하세요</p>
+            </div>
+
+            <div class="form-group">
+                <label for="theme">디자인 테마</label>
+                <select id="theme" name="theme">
+                    <option value="dark">Professional Dark - 전문가용 다크 테마</option>
+                    <option value="colorful">Colorful Modern - 생동감 있는 컬러풀 테마</option>
+                </select>
+                <p class="hint">전자책의 디자인 스타일을 선택하세요</p>
+            </div>
+
+            <div class="form-group">
+                <label for="model">AI 모델 선택</label>
+                <select id="model" name="model">
+                    <option value="claude">Claude 3.5 Sonnet - 고품질 (비용 높음)</option>
+                    <option value="gemini" selected>Gemini 2.0 Flash - 빠르고 저렴함 (테스트용 권장)</option>
+                </select>
+                <p class="hint">테스트용으로는 Gemini를, 최종 결과물은 Claude를 권장합니다</p>
+            </div>
+
+            <button type="submit" class="btn" id="submitBtn">
+                🚀 전자책 생성하기
+            </button>
+        </form>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>전자책을 생성하고 있습니다...</p>
+            <p style="font-size: 0.85rem; margin-top: 8px; color: #6C7293;">약 2-3분 정도 소요됩니다</p>
+        </div>
+
+        <div class="result" id="result">
+            <h3>✅ 전자책 생성 완료!</h3>
+            <p style="color: #B8BCC8; margin-bottom: 16px;">원하는 형식을 선택하여 다운로드하세요</p>
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <a href="#" id="downloadHtml" download style="flex: 1; min-width: 200px; text-align: center;">📄 HTML</a>
+                <a href="#" id="downloadMd" download style="flex: 1; min-width: 200px; text-align: center;">📝 Markdown</a>
+            </div>
+        </div>
+
+        <div class="error" id="error">
+            <strong>❌ 오류 발생</strong>
+            <p id="errorMessage" style="margin-top: 12px;"></p>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 엘비즈 파트너스 이상수</p>
+            <p style="margin-top: 4px;">📧 sangsu0916@naver.com</p>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('ebookForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const loading = document.getElementById('loading');
+        const result = document.getElementById('result');
+        const error = document.getElementById('error');
+        const downloadHtml = document.getElementById('downloadHtml');
+        const downloadMd = document.getElementById('downloadMd');
+        const errorMessage = document.getElementById('errorMessage');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // UI 초기화
+            submitBtn.disabled = true;
+            loading.classList.add('active');
+            result.classList.remove('active');
+            error.classList.remove('active');
+
+            const formData = {
+                folderName: document.getElementById('folderName').value,
+                topic: document.getElementById('topic').value,
+                theme: document.getElementById('theme').value,
+                model: document.getElementById('model').value
+            };
+
+            try {
+                const response = await fetch('/api/generate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // 성공 - 두 가지 다운로드 링크 설정
+                    loading.classList.remove('active');
+                    result.classList.add('active');
+
+                    // HTML 다운로드
+                    downloadHtml.href = data.downloadUrl;
+                    downloadHtml.download = data.filename;
+
+                    // MD 다운로드 (직접 링크)
+                    if (data.paths && data.paths.md) {
+                        const mdFilename = data.filename.replace('.html', '.md');
+                        // 파일명에서 실제 MD 경로 추출
+                        const mdPath = data.paths.md.split('/').pop();
+                        downloadMd.href = `/downloads-md/${mdPath}`;
+                        downloadMd.download = mdFilename;
+                    } else {
+                        downloadMd.style.opacity = '0.5';
+                        downloadMd.style.cursor = 'not-allowed';
+                        downloadMd.onclick = (e) => {
+                            e.preventDefault();
+                            alert('Markdown 파일을 찾을 수 없습니다');
+                        };
+                    }
+                } else {
+                    // 실패
+                    throw new Error(data.error || '전자책 생성에 실패했습니다');
+                }
+            } catch (err) {
+                loading.classList.remove('active');
+                error.classList.add('active');
+                errorMessage.textContent = err.message;
+            } finally {
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

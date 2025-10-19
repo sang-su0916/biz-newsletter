@@ -1,0 +1,44 @@
+{
+  "id": "content_marketing",
+  "title": "콘텐츠 마케팅 전략",
+  "category": "marketing",
+  "keywords": ["콘텐츠", "마케팅", "블로그", "SEO", "소셜미디어", "브랜딩"],
+  "description": "효과적인 콘텐츠 마케팅을 위한 전략적 프로세스 흐름도",
+  "color_palette": {
+    "primary": "#E17055",
+    "secondary": "#00B894",
+    "accent": "#FDCB6E",
+    "background": "#0A0A0A"
+  },
+  "svg_template": `
+    <div class="diagram-container">
+      <div class="diagram-title">{title} 핵심 프로세스</div>
+      <svg width="100%" height="350" viewBox="0 0 800 350">
+        <circle cx="400" cy="175" r="50" fill="#E17055"/>
+        <text x="400" y="180" text-anchor="middle" fill="white" font-size="12" font-weight="bold">콘텐츠 전략</text>
+
+        <rect x="150" y="50" width="100" height="40" rx="6" fill="#00B894"/>
+        <text x="200" y="75" text-anchor="middle" fill="white" font-size="10">계획 수립</text>
+
+        <rect x="550" y="50" width="100" height="40" rx="6" fill="#FDCB6E"/>
+        <text x="600" y="75" text-anchor="middle" fill="white" font-size="10">콘텐츠 제작</text>
+
+        <rect x="150" y="280" width="100" height="40" rx="6" fill="#6C5CE7"/>
+        <text x="200" y="305" text-anchor="middle" fill="white" font-size="10">배포 및 홍보</text>
+
+        <rect x="550" y="280" width="100" height="40" rx="6" fill="#A29BFE"/>
+        <text x="600" y="305" text-anchor="middle" fill="white" font-size="10">성과 분석</text>
+
+        <path d="M250 70 L350 140" stroke="#E17055" stroke-width="2" marker-end="url(#arrow7)"/>
+        <path d="M550 70 L450 140" stroke="#E17055" stroke-width="2" marker-end="url(#arrow7)"/>
+        <path d="M250 300 L350 210" stroke="#E17055" stroke-width="2" marker-end="url(#arrow7)"/>
+        <path d="M550 300 L450 210" stroke="#E17055" stroke-width="2" marker-end="url(#arrow7)"/>
+
+        <defs>
+          <marker id="arrow7" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#E17055"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>`
+}
